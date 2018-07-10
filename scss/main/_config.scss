@@ -1,0 +1,51 @@
+/* ---------------------------------------------------------------------
+CONFIG -------------------------------------------------------------------
+(Set all variables here)
+--------------------------------------------------------------------- */
+
+/// Base font size
+$base-size: 16px;
+
+/// Column Gutters
+$gutter: 15px;
+$gutter-mob: 10px;
+
+/// Padding
+$global-padding: $gutter;
+
+/// Breakpoints
+$bpxxs: 30em; /* 480px breakpoint */
+$bpxs: 37.5em; /* 600px breakpoint */
+$bps: 47.5em; /* 760px breakpoint */
+$bpm: 61.25em; /* 980px breakpoint */
+$bpl: 75em; /* 1200px breakpoint */
+$bpxl: 87.5em; /* 1400px breakpoint */
+$bpxxl: 93.75em; /* 1500px breakpoint */
+
+/// Columns
+$col-12: 	100%;
+$col-11: 	91.66666666666663%;
+$col-10: 	83.3333333333333%;
+$col-9: 	74.99999999999997%;
+$col-8: 	66.66666666666664%;
+$col-7: 	58.33333333333331%;
+$col-6: 	50%;
+$col-5: 	41.66666666666665%;
+$col-4: 	33.3333333333333%;
+$col-3: 	25%;
+$col-2: 	16.66666666666666%;
+$col-1: 	8.33333333333333%;
+
+/// Fonts
+$font-primary: Arial, Helvetica, sans-serif;
+$font-secondary: Georgia, Times, serif;
+
+/// Colours
+$color-white: #ffffff;
+$color-black: #000000;
+$color-red: #ff0000;
+
+$color-lightest: $color-white;
+$color-darkest: $color-black;
+$color-primary: $color-red;
+$color-primary--light: lighten($color-red,10%);

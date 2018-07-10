@@ -1,0 +1,36 @@
+/* ---------------------------------------------------------------------
+MODIFIERS --------------------------------------------------------------
+(These permanently change the behaviour of base elements and modules)
+--------------------------------------------------------------------- */
+
+.bold {	font-weight: 700; }
+.italic { font-style: italic; }
+.underline { text-decoration: underline; }
+
+.right { float: right; }
+.left { float: left; }
+.center { margin: 0 auto; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mr-0 { margin-right: 0; }
+.mb-0 { margin-bottom: 0; }
+.ml-0 { margin-left: 0; }
+
+.mt-gutter { margin-top: $gutter; }
+.mr-gutter { margin-right: $gutter; }
+.mb-gutter { margin-bottom: $gutter; }
+.ml-gutter { margin-left: $gutter; }
+
+.pt-0 { padding-top: 0; }
+.pr-0 { padding-right: 0; }
+.pb-0 { padding-bottom: 0; }
+.pl-0 { padding-left: 0; }
+
+.pt-gutter { padding-top: $gutter; }
+.pr-gutter { padding-right: $gutter; }
+.pb-gutter { padding-bottom: $gutter; }
+.pl-gutter { padding-left: $gutter; }

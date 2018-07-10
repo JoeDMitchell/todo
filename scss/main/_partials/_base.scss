@@ -1,0 +1,158 @@
+/* ---------------------------------------------------------------------
+BASE -------------------------------------------------------------------
+(Wherever this element is on the page, it should look like this)
+--------------------------------------------------------------------- */
+html {
+    width:100%;
+    height:100%;
+}
+
+body {
+    background-color: $color-darkest;
+    font-size: 100%;
+    font-family:$font-primary;
+    font-weight:400;
+    color: $color-darkest;
+    height:100%;
+    width:100%;
+    
+    /// Nice defaults
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: auto;
+}
+
+a {
+    color: $color-primary;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: $color-darkest;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ------------------------------------ 
+Typography (Base) ---------------------
+------------------------------------ */
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 700;
+    padding-bottom: $gutter;
+}
+
+h1 {
+    @include font-size(48);
+}
+
+h2 {
+    @include font-size(30);
+}
+
+h3 {
+    @include font-size(24);
+}
+
+h4, h5, h6 {
+    @include font-size(20);
+}
+
+p {
+    padding-bottom: $gutter;
+    max-width: 800px;
+}
+
+blockquote {
+    background: $color-primary;
+    padding: 15px;
+    margin-bottom: $gutter;
+}
+
+cite {
+    display: block;
+    text-align: right;
+    font-style: italic;
+    @include font-size(12);
+    margin-bottom: $gutter;
+}
+
+
+/*------------------------------------
+Forms (Base) -------------------------
+----------------------------------- */
+
+form {
+    margin-bottom: $gutter;
+}
+
+label {
+    padding-bottom: 10px;
+}
+
+input {
+    margin-bottom: $gutter;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    border: 1px solid $color-primary--light;
+    padding: 10px;
+    font-weight: lighter;
+}
+
+input[type="textarea"] {
+    @extend input[type="text"];
+    min-height: 120px;
+}
+
+select {
+    @extend input[type="text"];
+}
+
+textarea {
+    min-height: 120px;
+    width: 100%;
+    border: 1px solid $color-primary--light;
+    padding: $gutter / 2;
+    margin-bottom: $gutter / 4;
+
+    @include mq(bps) {
+        min-height: 180px;
+    }
+
+    @include mq(bpl) {
+        min-height: 220px;
+    }
+
+}
+
+/*------------------------------------
+Lists -------------------------
+----------------------------------- */
+
+ul,
+ol {
+    margin-bottom: $gutter;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+ul li,
+ol li {
+    list-style-position: inside;
+}
+

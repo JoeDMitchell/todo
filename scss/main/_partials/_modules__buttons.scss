@@ -1,0 +1,29 @@
+/* ---------------------------------------------------------------------
+BUTTONS ----------------------------------------------------------------
+--------------------------------------------------------------------- */
+
+/* Block components */
+
+%btn {
+	padding: 8px 10px;
+}
+
+.btn-primary {
+	@extend %btn;
+
+	&:hover{
+		
+	}
+}
+
+	/* Elements that depends upon the block */
+
+	.btn-primary__icon {
+
+	}
+
+		/* Modifiers that changes the style of the block */
+
+		.btn--large {
+
+		}

@@ -1,0 +1,169 @@
+/* ---------------------------------------------------------------------
+MIXINS & FUNCTION ------------------------------------------------------
+A few simple Sass helpers.
+--------------------------------------------------------------------- */
+
+// @font-face mixin
+// Order of the includes matters, and it is: normal, bold, italic, bold+italic.
+// Forked from Bourbon. https://github.com/thoughtbot/bourbon/
+@mixin font-face($font-family, $file-path, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $font-family;
+		font-weight: $weight;
+		font-style: $style;
+
+		src: url('#{$file-path}.eot');
+		src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+		     url('#{$file-path}.woff') format('woff'),
+		     url('#{$file-path}.ttf') format('truetype'),
+		     url('#{$file-path}.svg##{$font-family}') format('svg');
+	}
+}
+
+// Font-stack mixin
+// Use = @include font-stack($font-primary,400,italic);
+@mixin font-stack($family, $weight:400, $style:normal) {
+	font-family: $family;
+	font-weight: $weight;
+	font-style: $style;
+}
+
+// Strip units from values
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Calculate rems from pixels with px fallback
+// Use = @include font-size(14);
+
+@mixin font-size($px) {
+	$px: strip-unit($px);
+	$base: strip-unit($base-size);
+	font-size: ($px) + px;
+	font-size: ($px / $base) * 1rem;
+}
+
+// Media queries mixin
+// Use = @include mq(bps);
+
+@mixin mq($canvas) {
+	@if $canvas == bpxxs {
+		@media only screen and (min-width: $bpxxs) {
+			@content;
+		}
+	} 
+	@else if $canvas == bpxs {
+		@media only screen and (min-width: $bpxs) {
+			@content;
+		}
+	}
+	@else if $canvas == bps {
+		@media only screen and (min-width: $bps) {
+			@content;
+		}
+	}
+	@else if $canvas == bpm {
+		@media only screen and (min-width: $bpm) {
+			@content;
+		}
+	}
+	@else if $canvas == bpl {
+		@media only screen and (min-width: $bpl) {
+			@content;
+		}
+	}
+	@else if $canvas == bpxl {
+		@media only screen and (min-width: $bpxl) {
+			@content;
+		}
+	}
+	@else if $canvas == bpxxl {
+		@media only screen and (min-width: $bpxxl) {
+			@content;
+		}
+	}
+}
+
+// SVG + PNG fallback mixin (this required modernizr to be included).
+// Use = @include background-image('icon-name');
+$image-path: '../../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false, $type:false){
+	@if($name != 'none'){
+	    @if($type == 'png'){
+	    	background-image: url(#{$image-path}/#{$name}.png);
+	    } @elseif($type == 'jpg'){
+	    	background-image: url(#{$image-path}/#{$name}.jpg);
+	    } @else {
+	    	background-image: url(#{$image-path}/#{$name}.svg);
+	    }
+	    @if($size){
+	        background-size: $size;
+	    }
+	    .no-svg &{
+	        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+	        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+	        }
+	    }
+    }
+    @if ($name == 'none') {
+		background-image:none;
+    }
+}
+
+// Background styles mixin
+
+@mixin background-styles($position:top left, $fallback:false, $color:transparent, $repeat:no-repeat){
+	@if($fallback){
+        background-position: $fallback;
+    }
+	background-position: $position;
+	background-repeat: $repeat;
+	background-color: $color;
+}
+
+// CSS arrows mixin
+// Use = @include css-arrow(arrow-down,10,red);
+
+@mixin css-arrow($arrow-direction, $arrow-size:5px, $arrow-color:black) {
+		$arrow-size: strip-unit($arrow-size);
+		width: 0; 
+		height: 0;
+	@if $arrow-direction == arrow-up {
+		border-left: #{$arrow-size + px} solid transparent;
+		border-right: #{$arrow-size + px} solid transparent;
+		border-bottom: #{$arrow-size + px} solid $arrow-color;
+	}
+	@else if $arrow-direction == arrow-down {
+		border-left: #{$arrow-size + px} solid transparent;
+		border-right: #{$arrow-size + px} solid transparent;
+		border-top: #{$arrow-size + px} solid $arrow-color;
+	}
+	@else if $arrow-direction == arrow-left {
+		border-top: #{$arrow-size + px} solid transparent;
+		border-bottom: #{$arrow-size + px} solid transparent;
+		border-right: #{$arrow-size + px} solid $arrow-color;
+	}
+	@else if $arrow-direction == arrow-right {
+		border-top: #{$arrow-size + px} solid transparent;
+		border-bottom: #{$arrow-size + px} solid transparent;
+		border-left: #{$arrow-size + px} solid $arrow-color;
+	}
+}
+
+// Clearfix mixin
+// Use = @extend %clearfix;
+
+%clearfix {
+  *zoom: 1;
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
