@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="20px" viewBox="0 0 24 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-check--green</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD" transform="translate(-445.000000, -526.000000)" fill="#82E36D">
+            <path d="M464.113281,526.929688 C464.40625,526.636719 464.875,526.636719 465.167969,526.929688 L468.355469,530.117188 C468.648438,530.410156 468.648438,530.878906 468.355469,531.171875 L457.84375,541.882812 L454.65625,545.070312 C454.363281,545.363281 453.894531,545.363281 453.601562,545.070312 L445.644531,537.113281 C445.351562,536.820312 445.351562,536.339844 445.644531,536.046875 L448.832031,532.871094 C449.125,532.578125 449.59375,532.578125 449.886719,532.871094 L454.128906,537.113281 L464.113281,526.929688 Z" id="icon-check--green"></path>
+        </g>
+    </g>
+</svg>

@@ -29,7 +29,12 @@ if ($_POST){
 
 
 	$data = file_get_contents($file);
-	$data = get_object_vars(json_decode($data));
+	if ($data){
+		$data = get_object_vars(json_decode($data));
+	} else {
+		$data = 0;
+	}
+	
 
 }
 
@@ -38,7 +43,6 @@ include 'includes/static/header.php'; ?>
 <div class="container" id="main-content">
 	<div class="row">
 		<div class="col">
-			<h1>Time To Do</h1>
 
 			<div class="changeable-content">
 

@@ -34,3 +34,7 @@ MODIFIERS --------------------------------------------------------------
 .pr-gutter { padding-right: $gutter; }
 .pb-gutter { padding-bottom: $gutter; }
 .pl-gutter { padding-left: $gutter; }
+
+.js .hidden {
+	display:none;
+}

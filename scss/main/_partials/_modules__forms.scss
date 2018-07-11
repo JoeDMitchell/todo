@@ -2,3 +2,128 @@
 FORMS ------------------------------------------------------------------
 --------------------------------------------------------------------- */
 
+input#task, input#time {
+	padding-left:60px;
+	@include background-image(icon-plus--purple);
+	background-size:25px 25px;
+	background-repeat: no-repeat;
+	background-position:center left 20px;
+	margin:0;
+	@include font-size(18);
+	background-color:$color-lightest;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	@include single-transition(all,0.4s);
+
+	&:focus { 
+		outline: none;
+	}
+
+	& + input[type="submit"] {
+		position:absolute;
+		top:0;
+		right:0;
+		color:$color-faded;
+		font-weight:bold;
+		padding:25px;
+		margin:0;
+		background-color:transparent;
+		@include font-size(18);
+
+		&.is-active {
+			color:$color-primary;
+		}
+	}
+}
+
+input#time {
+	border-radius: 3px;
+}
+
+input#task {
+	cursor:pointer;
+
+	&.is-active {
+		margin-bottom:20px;
+		border-radius:0;
+		@include transform(scale(1.05));
+		@include box-shadow(0px 5px 7px 0px rgba(0,0,0,0.19));
+		cursor:text;
+	}
+}
+
+input#add-list {
+	cursor:pointer;
+}
+
+/// CUSTOM CHECKBOX
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+	position: absolute;
+	left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+	position: relative;
+	cursor: pointer;
+	width:100%;
+	display:inline-block;
+	padding:20px 20px 20px 60px;
+	border-bottom:1px solid $color-light;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+	content: '';
+	position: absolute;
+	left: 20px;
+	top: 50%;
+	margin-top:-15px;
+	width: 30px;
+	height: 30px;
+	@include single-transition(background-color,0.4s);
+	border: 2px solid $color-faded;
+	background-color: $color-lightest;
+	border-radius: 3px;
+}
+
+
+/* checked mark aspect */
+[type="checkbox"]:checked + label:after {
+	content: '';
+	position: absolute;
+	@include background-image(icon-check--green,100% 100%);
+	width:24px;
+	height:20px;
+	top:50%;
+	margin-top:-10px;
+	left:23px;
+}
+
+[type="checkbox"]:checked + label {
+	text-decoration: line-through;
+	color:$color-secondary;
+}
+
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+	border-color: $color-faded;
+	background-color: $color-light;
+}
+[type="checkbox"]:disabled + label {
+	color: $color-faded;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+	border: 2px dotted $color-primary;
+}
+
+/* hover style just for information */
+label:hover:before {
+	border: 2px solid $color-secondary !important;
+}

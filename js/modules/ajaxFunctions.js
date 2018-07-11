@@ -9,6 +9,9 @@ var AjaxFunctions = (function() {
                 toDoForm: $('#to-do-form'),
                 ajax: '',
                 button: $('#to-do-form input[type="checkbox"]'),
+                progressBar: $('.progress__bar'),
+                total: $('#to-do-form input[type="checkbox"]').length,
+                totalChecked: $('#to-do-form input[type="checkbox"]').filter(":checked").length,
             }
         },
 
@@ -27,7 +30,7 @@ var AjaxFunctions = (function() {
 
             s.theContent.addClass('is-changing');
 
-            var update_done = function(formData){
+            var update_done = function(formData,percent){
                 s.ajax = $.ajax({
                     type       : "POST",
                     data       : {formData : formData},
@@ -42,6 +45,19 @@ var AjaxFunctions = (function() {
                         s.theContent.html(data);
                         s.theContent.removeClass('is-changing');
                         AjaxFunctions.init();
+                        FormStyle.init();
+
+                        s.progressBar.css('width',percent+'%');
+
+                        setTimeout(function (){
+
+                            s.total = s.button.length;
+                            s.totalChecked = s.button.filter(":checked").length;
+                            var percent = (s.totalChecked / s.total) * 100;
+
+                            s.progressBar.css('width',percent+'%');
+
+                        }, 200);
                         
                     },
                     error     : function(jqXHR, textStatus, errorThrown) {
@@ -52,13 +68,15 @@ var AjaxFunctions = (function() {
 
             setTimeout(function (){
 
+                var percent = (s.totalChecked / s.total) * 100;
+
                 var formData = $(s.toDoForm).serialize();
 
                 if (s.ajax){
                     s.ajax.abort();
                 }
 
-                update_done(formData);
+                update_done(formData,percent);
 
             }, 200);
 

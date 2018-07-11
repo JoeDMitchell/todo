@@ -7,10 +7,8 @@ LAYOUT -------------------------------------------------------------------
 	margin: 0 auto;
 	position:relative;
 	top:50%;
-	background-color:$color-lightest;
 	@include transform(translate(0%,-50%));
-	border-radius:5px;
-	padding:30px 0;
+
 }
 
 .container {

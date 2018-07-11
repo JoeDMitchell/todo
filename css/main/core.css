@@ -91,13 +91,10 @@ LAYOUT -------------------------------------------------------------------
   margin: 0 auto;
   position: relative;
   top: 50%;
-  background-color: #ffffff;
   -moz-transform: translate(0%, -50%);
   -ms-transform: translate(0%, -50%);
   -webkit-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
-  border-radius: 5px;
-  padding: 30px 0;
 }
 
 .container {
@@ -756,7 +753,7 @@ html {
 
 body {
   font-size: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   color: #000000;
   height: 100%;
@@ -765,21 +762,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-kerning: auto;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
-  background: #7abcff;
-  /* Old browsers */
-  background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%, #4096ee 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 );
-  /* IE6-9 */
+  background: #3123ae;
+  background: -moz-linear-gradient(-45deg, #3123ae 0%, #d000db 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, #3123ae), color-stop(100%, #d000db));
+  background: -webkit-linear-gradient(-45deg, #3123ae 0%, #d000db 100%);
+  background: -o-linear-gradient(-45deg, #3123ae 0%, #d000db 100%);
+  background: -ms-linear-gradient(-45deg, #3123ae 0%, #d000db 100%);
+  background: linear-gradient(135deg, #3123ae 0%, #d000db 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3123ae', endColorstr='#d000db', GradientType=1 );
 }
 
 a {
-  color: #ff0000;
+  color: #3023AE;
   text-decoration: underline;
 }
 
@@ -802,8 +796,17 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, .h5, .h6, h5, h6 {
 }
 
 h1, .h1 {
-  font-size: 48px;
-  font-size: 3rem;
+  font-size: 30px;
+  font-size: 1.875rem;
+  color: #ffffff;
+  padding-bottom: 13px;
+}
+@media only screen and (min-width: 37.5em) {
+  h1, .h1 {
+    font-size: 36px;
+    font-size: 2.25rem;
+    padding-bottom: 10px;
+  }
 }
 
 h2, .h2 {
@@ -827,7 +830,7 @@ p {
 }
 
 blockquote {
-  background: #ff0000;
+  background: #3023AE;
   padding: 15px;
   margin-bottom: 15px;
 }
@@ -844,24 +847,21 @@ cite {
 /*------------------------------------
 Forms (Base) -------------------------
 ----------------------------------- */
-form {
-  margin-bottom: 15px;
-}
-
 label {
   padding-bottom: 10px;
 }
 
 input {
   margin-bottom: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 input[type="text"], input[type="textarea"], select,
 input[type="email"],
 input[type="number"] {
   width: 100%;
-  border: 1px solid #ff3333;
-  padding: 10px;
+  padding: 25px;
   font-weight: lighter;
 }
 
@@ -872,7 +872,7 @@ input[type="textarea"] {
 textarea {
   min-height: 120px;
   width: 100%;
-  border: 1px solid #ff3333;
+  border: 1px solid #d000db;
   padding: 7.5px;
   margin-bottom: 3.75px;
 }
@@ -918,21 +918,96 @@ SINGLE PAGES -----------------------------------------------------------
 MODULES -------------------------------------------------------------------
 (Reusable, modular parts of our design. These should work independently of layout)
 --------------------------------------------------------------------- */
+.changeable-content {
+  padding: 0px;
+  position: relative;
+}
+
 .progress {
   height: 10px;
-  border: 2px solid #dddddd;
-  background-color: #dddddd;
+  background-color: #eeeeee;
   position: relative;
-  margin-bottom: 15px;
 }
 .progress .progress__bar {
   position: absolute;
   left: 0px;
   top: 0px;
   height: 100%;
-  background-color: #ff0000;
+  width: 0%;
+  background-color: #43ce21;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
 }
 
+.todo {
+  margin: 0px;
+  padding: 15px 0 0 0;
+  background-color: #ffffff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  -moz-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+}
+.todo li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.todo li:last-child label {
+  border: none;
+}
+
+.time-remaining {
+  position: absolute;
+  right: 0;
+  top: -50px;
+}
+.time-remaining.is-done .time-remaining__number {
+  color: #D0021B;
+  -moz-animation: flash 2s linear infinite;
+  -webkit-animation: flash 2s linear infinite;
+  animation: flash 2s linear infinite;
+}
+.time-remaining .time-remaining__number {
+  width: 40px;
+  height: 40px;
+  padding: 9px 0;
+  display: inline-block;
+  border-radius: 3px;
+  font-size: 18px;
+  font-size: 1.125rem;
+  background-color: #ffffff;
+  text-align: center;
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.time-remaining .time-remaining__breaker {
+  color: #ffffff;
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+
+@-moz-keyframes flash {
+  50% {
+    color: #ffffff;
+  }
+}
+@-webkit-keyframes flash {
+  50% {
+    color: #ffffff;
+  }
+}
+@keyframes flash {
+  50% {
+    color: #ffffff;
+  }
+}
 /* ---------------------------------------------------------------------
 HEADER (GLOBAL) --------------------------------------------------------
 --------------------------------------------------------------------- */
@@ -967,6 +1042,158 @@ LISTS ------------------------------------------------------------------
 /* ---------------------------------------------------------------------
 FORMS ------------------------------------------------------------------
 --------------------------------------------------------------------- */
+input#task, input#time {
+  padding-left: 60px;
+  background-image: url(../../img/icon-plus--purple.svg);
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center left 20px;
+  margin: 0;
+  font-size: 18px;
+  font-size: 1.125rem;
+  background-color: #ffffff;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.no-svg input#task, .no-svg input#time {
+  background-image: url(../../img/icon-plus--purple.png);
+}
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .no-svg input#task, .no-svg input#time {
+    background-image: url(../../img/icon-plus--purple@2x.png);
+  }
+}
+input#task:focus, input#time:focus {
+  outline: none;
+}
+input#task + input[type="submit"], input#time + input[type="submit"] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #bbbbbb;
+  font-weight: bold;
+  padding: 25px;
+  margin: 0;
+  background-color: transparent;
+  font-size: 18px;
+  font-size: 1.125rem;
+}
+input#task + input[type="submit"].is-active, input#time + input[type="submit"].is-active {
+  color: #3023AE;
+}
+
+input#time {
+  border-radius: 3px;
+}
+
+input#task {
+  cursor: pointer;
+}
+input#task.is-active {
+  margin-bottom: 20px;
+  border-radius: 0;
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  -moz-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+  cursor: text;
+}
+
+input#add-list {
+  cursor: pointer;
+}
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  padding: 20px 20px 20px 60px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  margin-top: -15px;
+  width: 30px;
+  height: 30px;
+  -moz-transition: background-color 0.4s;
+  -o-transition: background-color 0.4s;
+  -webkit-transition: background-color 0.4s;
+  transition: background-color 0.4s;
+  border: 2px solid #bbbbbb;
+  background-color: #ffffff;
+  border-radius: 3px;
+}
+
+/* checked mark aspect */
+[type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  background-image: url(../../img/icon-check--green.svg);
+  background-size: 100% 100%;
+  width: 24px;
+  height: 20px;
+  top: 50%;
+  margin-top: -10px;
+  left: 23px;
+}
+.no-svg [type="checkbox"]:checked + label:after {
+  background-image: url(../../img/icon-check--green.png);
+}
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .no-svg [type="checkbox"]:checked + label:after {
+    background-image: url(../../img/icon-check--green@2x.png);
+  }
+}
+
+[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #43ce21;
+}
+
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  border-color: #bbbbbb;
+  background-color: #eeeeee;
+}
+
+[type="checkbox"]:disabled + label {
+  color: #bbbbbb;
+}
+
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px dotted #3023AE;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #43ce21 !important;
+}
+
 /* ---------------------------------------------------------------------
 MODIFIERS --------------------------------------------------------------
 (These permanently change the behaviour of base elements and modules)
@@ -1069,4 +1296,8 @@ MODIFIERS --------------------------------------------------------------
 
 .pl-gutter {
   padding-left: 15px;
+}
+
+.js .hidden {
+  display: none;
 }

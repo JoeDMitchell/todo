@@ -31,7 +31,7 @@ function saveData($done,$time,$new,$file){
     $currentTasks = file_get_contents($file);
     $currentTasks = json_decode($currentTasks);
 
-    if ($currentTasks){
+    if (isset($currentTasks->tasks)){
 
         $currentTaskArray = $currentTasks->tasks;
 
@@ -102,14 +102,10 @@ function calcTimeRemaining($totalTime,$startTime){
 
 
 
-    $interval = $start - $nowStamp;
+    $interval = max(0,$start - $nowStamp);
     //$seconds = $interval->format('%s');
 
-    if ($interval < 1){
-        return -1;
-    } else {
-        return getNiceDuration($interval);
-    }
+    return getNiceDuration($interval);
     
 
 }
@@ -117,25 +113,22 @@ function calcTimeRemaining($totalTime,$startTime){
 function getNiceDuration($durationInSeconds) {
 
   $duration = '';
-  $days = floor($durationInSeconds / 86400);
+  $days = max(0,floor($durationInSeconds / 86400));
   $durationInSeconds -= $days * 86400;
-  $hours = floor($durationInSeconds / 3600);
+  $hours = max(0,floor($durationInSeconds / 3600));
   $durationInSeconds -= $hours * 3600;
-  $minutes = floor($durationInSeconds / 60);
-  $seconds = $durationInSeconds - $minutes * 60;
+  $minutes = max(0,floor($durationInSeconds / 60));
+  $seconds = max(0,$durationInSeconds - $minutes * 60);
 
-  if($days > 0) {
-    $duration .= $days . ' days';
-  }
-  if($hours > 0) {
-    $duration .= ' ' . $hours . ' hours';
-  }
-  if($minutes > 0) {
-    $duration .= ' ' . $minutes . ' minutes';
-  }
-  if($seconds > 0) {
-    $duration .= ' ' . $seconds . ' seconds';
-  }
+  // if($days > 0) {
+  //   $duration .= $days . ' days';
+  // }
+    $duration .= '<span class="time-remaining__number">' . sprintf("%02d", $hours) . '</span><span class="time-remaining__breaker">:</span>';
+    
+    $duration .= '<span class="time-remaining__number">'. sprintf("%02d", $minutes) .'</span>';
+  // if($seconds > 0) {
+  //   $duration .= ' ' . $seconds . ' seconds';
+  // }
   return $duration;
 }
 
@@ -144,8 +137,8 @@ function getTheContent($data){
 
     if (!$data['time']){
         return '<form action="" method="post" id="to-do-form">
-        <label for="time">How long do you have?</label>
-        <input type="number" name="time" id="time" placeholder="mins">
+        <label for="time" class="hidden">How long do you have?</label>
+        <input type="number" name="time" id="time" placeholder="How long do you have? (mins)" autocomplete="off">
         <input type="submit" value="Start" id="add-time">
         </form>';
     }
@@ -156,35 +149,38 @@ function getTheContent($data){
         $remaining = -1;
     }
 
-    if ($remaining > -1){ 
-        $content = '<div class="time-remaining">
-            Time Remaining: <span class="time-remaining__time">'.$remaining.'</span>
-        </div>';
+    if ($remaining == 0){
+        $content = '<div class="time-remaining is-done">'.$remaining.'</div>';
+    } elseif ($remaining > -1){ 
+        $content = '<div class="time-remaining">'.$remaining.'</div>';
     } else {
         $content = '';
     }
 
-    if (isset($data['tasks'])){
-        $totalTasks = 0;
-        $totalDone = 0;
-
-        foreach($data['tasks'] as $value){
-            $totalTasks++;
-            if ($value == 1){
-                $totalDone++;
-            }
-        }
-
-        $percent = ($totalDone / $totalTasks) * 100;
-
-        $content .= '<div class="progress"><span class="progress__bar" style="width:'.$percent.'%;"></span></div>';
-    }
+    
     
     $content .= '<form action="" method="post" id="to-do-form">
-        <label for="time">What\'s to do?</label>
-        <input type="text" id="task" name="task">
-        <input type="submit" value="Add" id="add-list">
-        <ul class="todo">';
+        <label for="time" class="hidden">What\'s to do?</label>
+        <input type="text" id="task" name="task" placeholder="Add a task" autocomplete="off">
+        <input type="submit" value="Add" id="add-list">';
+
+    // if (isset($data['tasks'])){
+    //     $totalTasks = 0;
+    //     $totalDone = 0;
+
+    //     foreach($data['tasks'] as $value){
+    //         $totalTasks++;
+    //         if ($value == 1){
+    //             $totalDone++;
+    //         }
+    //     }
+
+    //     $percent = ($totalDone / $totalTasks) * 100;
+
+         $content .= '<div class="progress"><span class="progress__bar"></span></div>';
+    // }
+
+    $content .='<ul class="todo">';
 
     if (isset($data['tasks'])){
 
@@ -212,7 +208,7 @@ function getTheContent($data){
     }
 
     $content .= '</ul>
-        <input type="submit" value="Save" id="save-list">
+        <input type="submit" value="Save" id="save-list" class="hidden">
     </form>';
 
     return $content;

@@ -21,12 +21,15 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-kerning: auto;
 
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
-    background: #7abcff; /* Old browsers */
-    background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+    background: rgba(49,35,174,1);
+    background: -moz-linear-gradient(-45deg, rgba(49,35,174,1) 0%, rgba(208,0,219,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(49,35,174,1)), color-stop(100%, rgba(208,0,219,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(49,35,174,1) 0%, rgba(208,0,219,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(49,35,174,1) 0%, rgba(208,0,219,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(49,35,174,1) 0%, rgba(208,0,219,1) 100%);
+    background: linear-gradient(135deg, rgba(49,35,174,1) 0%, rgba(208,0,219,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3123ae', endColorstr='#d000db', GradientType=1 );
+
 }
 
 a {
@@ -54,7 +57,14 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 h1 {
-    @include font-size(48);
+    @include font-size(30);
+    color:$color-lightest;
+    padding-bottom:13px;
+
+    @include mq(bpxs) {
+        @include font-size(36);
+        padding-bottom:10px;
+    }
 }
 
 h2 {
@@ -94,7 +104,7 @@ Forms (Base) -------------------------
 ----------------------------------- */
 
 form {
-    margin-bottom: $gutter;
+    //margin-bottom: $gutter;
 }
 
 label {
@@ -103,14 +113,15 @@ label {
 
 input {
     margin-bottom: $gutter;
+    font-family:$font-primary;
+    font-weight:400;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="number"] {
     width: 100%;
-    border: 1px solid $color-primary--light;
-    padding: 10px;
+    padding: 25px;
     font-weight: lighter;
 }
 

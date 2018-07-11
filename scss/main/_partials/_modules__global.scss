@@ -3,18 +3,85 @@ MODULES -------------------------------------------------------------------
 (Reusable, modular parts of our design. These should work independently of layout)
 --------------------------------------------------------------------- */
 
+.changeable-content {
+	//border-radius:3px;
+	padding:0px;
+	//background-color:$color-lightest;
+	//overflow:hidden;
+	position:relative;
+}
+
 .progress {
 	height:10px;
-	border:2px solid $color-light;
 	background-color:$color-light;
 	position:relative;
-	margin-bottom:$gutter;
 
 	.progress__bar {
 		position:absolute;
 		left:0px;
 		top:0px;
 		height:100%;
-		background-color:$color-primary;
+		width:0%;
+		background-color:$color-secondary;
+		@include single-transition(all,0.4s);
 	}
+}
+
+.todo {
+	margin: 0px;
+	padding:15px 0 0 0;
+	background-color:$color-lightest;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	@include box-shadow(0px 5px 7px 0px rgba(0,0,0,0.19));
+
+	li {
+		list-style-type:none;
+		padding:0;
+		margin:0;
+
+		&:last-child {
+			label {
+				border:none;
+			}
+		}
+	}
+}
+
+.time-remaining {
+	position:absolute;
+	right:0;
+	top:-50px;
+
+	&.is-done {
+		.time-remaining__number {
+			color:$color-error;
+			@include animation(flash 2s linear infinite);
+		}
+	}
+
+	.time-remaining__number {
+		width:40px;
+		height:40px;
+		padding:9px 0;
+		display:inline-block;
+		border-radius:3px;
+		@include font-size(18);
+		background-color:$color-lightest;
+		text-align:center;
+		@include box-shadow(0px 3px 5px 0px rgba(0,0,0,0.10));
+	}
+
+	.time-remaining__breaker {
+		color:$color-lightest;
+		display:inline-block;
+		margin:0 5px;
+		@include font-size(18);
+	}
+}
+
+@include keyframes(flash) {
+  50% {
+    color: $color-lightest;
+  }
 }

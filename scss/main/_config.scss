@@ -37,17 +37,24 @@ $col-2: 	16.66666666666666%;
 $col-1: 	8.33333333333333%;
 
 /// Fonts
-$font-primary: Arial, Helvetica, sans-serif;
+$font-primary: Helvetica, Arial, sans-serif;
 $font-secondary: Georgia, Times, serif;
 
 /// Colours
 $color-white: #ffffff;
 $color-black: #000000;
-$color-red: #ff0000;
-$color-grey: #dddddd;
+$color-purple: #3023AE;
+$color-purple-2: #d000db;
+$color-grey: #eeeeee;
+$color-grey-2: #bbbbbb;
+$color-green: #43ce21;
+$color-red: #D0021B;
 
 $color-lightest: $color-white;
 $color-light: $color-grey;
+$color-faded: $color-grey-2;
 $color-darkest: $color-black;
-$color-primary: $color-red;
-$color-primary--light: lighten($color-red,10%);
+$color-primary: $color-purple;
+$color-primary--light: $color-purple-2;
+$color-secondary: $color-green;
+$color-error: $color-red;
