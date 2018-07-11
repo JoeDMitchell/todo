@@ -2,6 +2,6 @@
 
 (function() {
 
-	
+	AjaxFunctions.init();
 
 })();

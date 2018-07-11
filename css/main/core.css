@@ -87,7 +87,7 @@ LAYOUT -------------------------------------------------------------------
 (These are sections, they hold one or more Modules together and form the grid system / structure)
 --------------------------------------------------------------------- */
 .wrapper {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   position: relative;
   top: 50%;
@@ -96,6 +96,8 @@ LAYOUT -------------------------------------------------------------------
   -ms-transform: translate(0%, -50%);
   -webkit-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
+  border-radius: 5px;
+  padding: 30px 0;
 }
 
 .container {
@@ -753,7 +755,6 @@ html {
 }
 
 body {
-  background-color: #000000;
   font-size: 100%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -764,6 +765,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-kerning: auto;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
+  background: #7abcff;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #7abcff 0%, #60abf8 44%, #4096ee 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%, #4096ee 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 );
+  /* IE6-9 */
 }
 
 a {
@@ -906,6 +918,21 @@ SINGLE PAGES -----------------------------------------------------------
 MODULES -------------------------------------------------------------------
 (Reusable, modular parts of our design. These should work independently of layout)
 --------------------------------------------------------------------- */
+.progress {
+  height: 10px;
+  border: 2px solid #dddddd;
+  background-color: #dddddd;
+  position: relative;
+  margin-bottom: 15px;
+}
+.progress .progress__bar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  background-color: #ff0000;
+}
+
 /* ---------------------------------------------------------------------
 HEADER (GLOBAL) --------------------------------------------------------
 --------------------------------------------------------------------- */

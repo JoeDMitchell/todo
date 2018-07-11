@@ -1,4 +1,3 @@
-
 var AjaxFunctions = (function() {
     var s;
 
@@ -68,12 +67,5 @@ var AjaxFunctions = (function() {
 
 
     };
-
-})();
-//// initialise modules
-
-(function() {
-
-	AjaxFunctions.init();
 
 })();

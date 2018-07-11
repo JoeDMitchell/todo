@@ -2,3 +2,19 @@
 MODULES -------------------------------------------------------------------
 (Reusable, modular parts of our design. These should work independently of layout)
 --------------------------------------------------------------------- */
+
+.progress {
+	height:10px;
+	border:2px solid $color-light;
+	background-color:$color-light;
+	position:relative;
+	margin-bottom:$gutter;
+
+	.progress__bar {
+		position:absolute;
+		left:0px;
+		top:0px;
+		height:100%;
+		background-color:$color-primary;
+	}
+}

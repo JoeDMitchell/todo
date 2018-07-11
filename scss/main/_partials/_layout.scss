@@ -3,12 +3,14 @@ LAYOUT -------------------------------------------------------------------
 (These are sections, they hold one or more Modules together and form the grid system / structure)
 --------------------------------------------------------------------- */
 .wrapper {
-	max-width:800px;
+	max-width:600px;
 	margin: 0 auto;
 	position:relative;
 	top:50%;
 	background-color:$color-lightest;
 	@include transform(translate(0%,-50%));
+	border-radius:5px;
+	padding:30px 0;
 }
 
 .container {
