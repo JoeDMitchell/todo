@@ -2,4 +2,4 @@
 
 Joe's to do list
 
-Version: 1.0.8
+Version: 1.0.10
