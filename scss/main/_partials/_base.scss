@@ -60,6 +60,7 @@ h1 {
     @include font-size(30);
     color:$color-lightest;
     padding-bottom:13px;
+    opacity:0.8;
 
     @include mq(bpxs) {
         @include font-size(36);

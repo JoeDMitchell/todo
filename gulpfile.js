@@ -23,7 +23,7 @@ gulp.task('scriptVendors', function() {
         'js/vendor/*.js',
         ])
         .pipe(concat('vendors.js'))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('js'));
 });
 
@@ -35,7 +35,7 @@ gulp.task('scripts', function() {
         'js/modules/init.js'
         ])
         .pipe(concat('site.js'))
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest('js'));
 });
 

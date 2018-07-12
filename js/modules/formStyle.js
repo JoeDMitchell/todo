@@ -15,13 +15,11 @@ var FormStyle = (function() {
         },
 
         bindUIActions: function() {
-            console.log('boop');
+            // ADD CLASSES ON ACTIONS
             s.addTask.on('focusin', function(){
-                console.log('boop1');
                 FormStyle.activeInput('active');
             });
             s.addTask.on('focusout', function(){
-                console.log('boop2');
                 FormStyle.activeInput('inactive');
             });
         },

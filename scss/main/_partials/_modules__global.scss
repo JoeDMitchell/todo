@@ -9,6 +9,66 @@ MODULES -------------------------------------------------------------------
 	//background-color:$color-lightest;
 	//overflow:hidden;
 	position:relative;
+
+	&.is-complete {
+		border-radius:3px;
+		background-color:$color-secondary;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#43ce21+0,1ba332+100 */
+		background: -moz-linear-gradient(-45deg, #43ce21 0%, #1ba332 100%); /* FF3.6-15 */
+		background: -webkit-linear-gradient(-45deg, #43ce21 0%,#1ba332 100%); /* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(135deg, #43ce21 0%,#1ba332 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43ce21', endColorstr='#1ba332',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+		@include box-shadow(0px 5px 18px 0px rgba(0,0,0,0.4));
+
+		* {
+			@include single-transition(all,0.4s);
+			opacity:0;
+		}
+
+		&:before {
+			content:"Well done!";
+			color:$color-lightest;
+			@include font-size(30);
+			width:100%;
+			position:absolute;
+			text-align:center;
+			top:30%;
+			font-family:$font-primary;
+			font-weight:700;
+		}
+
+		&.is-complete--2:before {
+			content:"Proud of you!";
+		}
+
+		&.is-complete--3:before {
+			content:"You're the best!";
+		}
+
+		&.is-complete--4:before {
+			content:"Another one bites the dust!";
+		}
+
+		&.is-complete--5:before {
+			content:"You're on it like a car bonnet!";
+		}
+
+		&:after {
+			content:'';
+			width:50px;
+			height:50px;
+			top:45%;
+			left:50%;
+			margin-left:-25px;
+			position:absolute;
+			border-radius:100%;
+			background-color:$color-lightest;
+			@include background-image(icon-check--green, 24px 21px);
+			background-repeat:no-repeat;
+			background-position:center center;
+		}
+
+	}
 }
 
 .progress {
@@ -29,18 +89,27 @@ MODULES -------------------------------------------------------------------
 
 .todo {
 	margin: 0px;
-	padding:15px 0 0 0;
+	padding:0px;
 	background-color:$color-lightest;
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
-	@include box-shadow(0px 5px 7px 0px rgba(0,0,0,0.19));
+	@include box-shadow(0px 8px 13px 0px rgba(0,0,0,0.3));
+	max-height:400px;
+	overflow:auto;
 
 	li {
 		list-style-type:none;
 		padding:0;
 		margin:0;
+		width:100%;
+		border-bottom:1px solid $color-light;
+
+		&:first-child {
+			padding-top:15px;
+		}
 
 		&:last-child {
+			padding-bottom:15px;
 			label {
 				border:none;
 			}
@@ -69,7 +138,12 @@ MODULES -------------------------------------------------------------------
 		@include font-size(18);
 		background-color:$color-lightest;
 		text-align:center;
-		@include box-shadow(0px 3px 5px 0px rgba(0,0,0,0.10));
+		@include box-shadow(0px 5px 7px 0px rgba(0,0,0,0.1));
+		@include single-transition(all,0.4s);
+
+		&.is-changing {
+			@include transform(translate(0, 5px));
+		}
 	}
 
 	.time-remaining__breaker {

@@ -800,6 +800,7 @@ h1, .h1 {
   font-size: 1.875rem;
   color: #ffffff;
   padding-bottom: 13px;
+  opacity: 0.8;
 }
 @media only screen and (min-width: 37.5em) {
   h1, .h1 {
@@ -922,6 +923,76 @@ MODULES -------------------------------------------------------------------
   padding: 0px;
   position: relative;
 }
+.changeable-content.is-complete {
+  border-radius: 3px;
+  background-color: #43ce21;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#43ce21+0,1ba332+100 */
+  background: -moz-linear-gradient(-45deg, #43ce21 0%, #1ba332 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #43ce21 0%, #1ba332 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #43ce21 0%, #1ba332 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#43ce21', endColorstr='#1ba332',GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  -moz-box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 5px 18px 0px rgba(0, 0, 0, 0.4);
+}
+.changeable-content.is-complete * {
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  opacity: 0;
+}
+.changeable-content.is-complete:before {
+  content: "Well done!";
+  color: #ffffff;
+  font-size: 30px;
+  font-size: 1.875rem;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+.changeable-content.is-complete.is-complete--2:before {
+  content: "Proud of you!";
+}
+.changeable-content.is-complete.is-complete--3:before {
+  content: "You're the best!";
+}
+.changeable-content.is-complete.is-complete--4:before {
+  content: "Another one bites the dust!";
+}
+.changeable-content.is-complete.is-complete--5:before {
+  content: "You're on it like a car bonnet!";
+}
+.changeable-content.is-complete:after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  top: 45%;
+  left: 50%;
+  margin-left: -25px;
+  position: absolute;
+  border-radius: 100%;
+  background-color: #ffffff;
+  background-image: url(../../img/icon-check--green.svg);
+  background-size: 24px 21px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.no-svg .changeable-content.is-complete:after {
+  background-image: url(../../img/icon-check--green.png);
+}
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .no-svg .changeable-content.is-complete:after {
+    background-image: url(../../img/icon-check--green@2x.png);
+  }
+}
 
 .progress {
   height: 10px;
@@ -943,18 +1014,28 @@ MODULES -------------------------------------------------------------------
 
 .todo {
   margin: 0px;
-  padding: 15px 0 0 0;
+  padding: 0px;
   background-color: #ffffff;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  -moz-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
-  -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
-  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 8px 13px 0px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 8px 13px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 8px 13px 0px rgba(0, 0, 0, 0.3);
+  max-height: 400px;
+  overflow: auto;
 }
 .todo li {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+}
+.todo li:first-child {
+  padding-top: 15px;
+}
+.todo li:last-child {
+  padding-bottom: 15px;
 }
 .todo li:last-child label {
   border: none;
@@ -981,9 +1062,19 @@ MODULES -------------------------------------------------------------------
   font-size: 1.125rem;
   background-color: #ffffff;
   text-align: center;
-  -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, 0.1);
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.time-remaining .time-remaining__number.is-changing {
+  -moz-transform: translate(0, 5px);
+  -ms-transform: translate(0, 5px);
+  -webkit-transform: translate(0, 5px);
+  transform: translate(0, 5px);
 }
 .time-remaining .time-remaining__breaker {
   color: #ffffff;
@@ -1078,9 +1169,10 @@ input#task + input[type="submit"], input#time + input[type="submit"] {
   font-weight: bold;
   padding: 25px;
   margin: 0;
-  background-color: transparent;
+  background-color: #ffffff;
   font-size: 18px;
   font-size: 1.125rem;
+  border-radius: 3px;
 }
 input#task + input[type="submit"].is-active, input#time + input[type="submit"].is-active {
   color: #3023AE;
@@ -1092,6 +1184,7 @@ input#time {
 
 input#task {
   cursor: pointer;
+  padding-right: 80px;
 }
 input#task.is-active {
   margin-bottom: 20px;
@@ -1121,10 +1214,8 @@ input#add-list {
 [type="checkbox"]:checked + label {
   position: relative;
   cursor: pointer;
-  width: 100%;
   display: inline-block;
-  padding: 20px 20px 20px 60px;
-  border-bottom: 1px solid #eeeeee;
+  padding: 20px 0px 20px 60px;
 }
 
 /* checkbox aspect */
@@ -1147,29 +1238,37 @@ input#add-list {
 }
 
 /* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
 [type="checkbox"]:checked + label:after {
-  content: '';
-  position: absolute;
-  background-image: url(../../img/icon-check--green.svg);
-  background-size: 100% 100%;
-  width: 24px;
-  height: 20px;
+  height: 1px;
+  background-color: #43ce21;
+  width: 0px;
+  left: 60px;
   top: 50%;
-  margin-top: -10px;
-  left: 23px;
+  content: "";
+  position: absolute;
 }
-.no-svg [type="checkbox"]:checked + label:after {
+
+/* checked mark aspect */
+[type="checkbox"]:checked + label:before {
+  background-image: url(../../img/icon-check--green.svg);
+  background-size: 24px 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.no-svg [type="checkbox"]:checked + label:before {
   background-image: url(../../img/icon-check--green.png);
 }
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  .no-svg [type="checkbox"]:checked + label:after {
+  .no-svg [type="checkbox"]:checked + label:before {
     background-image: url(../../img/icon-check--green@2x.png);
   }
 }
 
+/* Try and make the line through animate. NOT WORKING!!! */
 [type="checkbox"]:checked + label {
-  text-decoration: line-through;
   color: #43ce21;
+  text-decoration: line-through;
 }
 
 /* disabled checkbox */

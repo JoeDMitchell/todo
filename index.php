@@ -1,10 +1,12 @@
 <?php 
 include 'includes/functions/functions.php';
 
+// SAVE FILE
 $file = 'tasks.json';
 
 if ($_POST){
 
+	// GET THE POSTED VALUES
 	if (isset($_POST['todo'])){
 		$done = $_POST['todo'];
 	} else {
@@ -23,18 +25,21 @@ if ($_POST){
 		$new = 0;
 	}
 
+	// SAVE THE POSTED VALUES AND OUTPUT THEM
 	$data = saveData($done,$time,$new,$file);
 
 } else {
 
-
+	// IF NOTHING POSTED, GET THE EXISTING DATA
 	$data = file_get_contents($file);
+
 	if ($data){
 		$data = get_object_vars(json_decode($data));
 	} else {
+
+		// IF NO DATA, SET VALUE TO 0
 		$data = 0;
 	}
-	
 
 }
 
@@ -47,6 +52,7 @@ include 'includes/static/header.php'; ?>
 			<div class="changeable-content">
 
 				<?php 
+				// ECHO OUT THE CONTENT FUNCTION
 				echo getTheContent($data);
 				?>
 				
