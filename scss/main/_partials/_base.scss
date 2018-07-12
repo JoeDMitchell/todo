@@ -122,8 +122,12 @@ input[type="text"],
 input[type="email"],
 input[type="number"] {
     width: 100%;
-    padding: 25px;
+    padding: 20px;
     font-weight: lighter;
+
+    @include mq(bps) {
+        padding: 25px;
+    }
 }
 
 input[type="textarea"] {

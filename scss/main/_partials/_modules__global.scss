@@ -94,7 +94,7 @@ MODULES -------------------------------------------------------------------
 	border-bottom-left-radius: 3px;
 	border-bottom-right-radius: 3px;
 	@include box-shadow(0px 8px 13px 0px rgba(0,0,0,0.3));
-	max-height:400px;
+	max-height:75vh;
 	overflow:auto;
 
 	li {
@@ -105,11 +105,20 @@ MODULES -------------------------------------------------------------------
 		border-bottom:1px solid $color-light;
 
 		&:first-child {
-			padding-top:15px;
+			padding-top:10px;
+
+			@include mq(bps) {
+				padding-top:15px;
+			}
 		}
 
 		&:last-child {
-			padding-bottom:15px;
+			padding-bottom:10px;
+
+			@include mq(bps) {
+				padding-bottom:15px;
+			}
+
 			label {
 				border:none;
 			}

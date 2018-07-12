@@ -862,8 +862,15 @@ input[type="text"], input[type="textarea"], select,
 input[type="email"],
 input[type="number"] {
   width: 100%;
-  padding: 25px;
+  padding: 20px;
   font-weight: lighter;
+}
+@media only screen and (min-width: 47.5em) {
+  input[type="text"], input[type="textarea"], select,
+  input[type="email"],
+  input[type="number"] {
+    padding: 25px;
+  }
 }
 
 input[type="textarea"] {
@@ -1021,7 +1028,7 @@ MODULES -------------------------------------------------------------------
   -moz-box-shadow: 0px 8px 13px 0px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 8px 13px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 8px 13px 0px rgba(0, 0, 0, 0.3);
-  max-height: 400px;
+  max-height: 75vh;
   overflow: auto;
 }
 .todo li {
@@ -1032,10 +1039,20 @@ MODULES -------------------------------------------------------------------
   border-bottom: 1px solid #eeeeee;
 }
 .todo li:first-child {
-  padding-top: 15px;
+  padding-top: 10px;
+}
+@media only screen and (min-width: 47.5em) {
+  .todo li:first-child {
+    padding-top: 15px;
+  }
 }
 .todo li:last-child {
-  padding-bottom: 15px;
+  padding-bottom: 10px;
+}
+@media only screen and (min-width: 47.5em) {
+  .todo li:last-child {
+    padding-bottom: 15px;
+  }
 }
 .todo li:last-child label {
   border: none;
@@ -1134,11 +1151,11 @@ LISTS ------------------------------------------------------------------
 FORMS ------------------------------------------------------------------
 --------------------------------------------------------------------- */
 input#task, input#time {
-  padding-left: 60px;
+  padding-left: 50px;
   background-image: url(../../img/icon-plus--purple.svg);
-  background-size: 25px 25px;
+  background-size: 20px 20px;
   background-repeat: no-repeat;
-  background-position: center left 20px;
+  background-position: center left 15px;
   margin: 0;
   font-size: 18px;
   font-size: 1.125rem;
@@ -1158,6 +1175,13 @@ input#task, input#time {
     background-image: url(../../img/icon-plus--purple@2x.png);
   }
 }
+@media only screen and (min-width: 47.5em) {
+  input#task, input#time {
+    padding-left: 60px;
+    background-size: 25px 25px;
+    background-position: center left 20px;
+  }
+}
 input#task:focus, input#time:focus {
   outline: none;
 }
@@ -1167,12 +1191,17 @@ input#task + input[type="submit"], input#time + input[type="submit"] {
   right: 0;
   color: #bbbbbb;
   font-weight: bold;
-  padding: 25px;
+  padding: 20px;
   margin: 0;
   background-color: #ffffff;
   font-size: 18px;
   font-size: 1.125rem;
   border-radius: 3px;
+}
+@media only screen and (min-width: 47.5em) {
+  input#task + input[type="submit"], input#time + input[type="submit"] {
+    padding: 25px;
+  }
 }
 input#task + input[type="submit"].is-active, input#time + input[type="submit"].is-active {
   color: #3023AE;
@@ -1215,7 +1244,13 @@ input#add-list {
   position: relative;
   cursor: pointer;
   display: inline-block;
-  padding: 20px 0px 20px 60px;
+  padding: 15px 0px 15px 50px;
+}
+@media only screen and (min-width: 47.5em) {
+  [type="checkbox"]:not(:checked) + label,
+  [type="checkbox"]:checked + label {
+    padding: 20px 0px 20px 60px;
+  }
 }
 
 /* checkbox aspect */
@@ -1223,11 +1258,11 @@ input#add-list {
 [type="checkbox"]:checked + label:before {
   content: '';
   position: absolute;
-  left: 20px;
+  left: 15px;
   top: 50%;
-  margin-top: -15px;
-  width: 30px;
-  height: 30px;
+  margin-top: -12.5px;
+  width: 25px;
+  height: 25px;
   -moz-transition: background-color 0.4s;
   -o-transition: background-color 0.4s;
   -webkit-transition: background-color 0.4s;
@@ -1236,6 +1271,15 @@ input#add-list {
   background-color: #ffffff;
   border-radius: 3px;
 }
+@media only screen and (min-width: 47.5em) {
+  [type="checkbox"]:not(:checked) + label:before,
+  [type="checkbox"]:checked + label:before {
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    left: 20px;
+  }
+}
 
 /* checked mark aspect */
 [type="checkbox"]:not(:checked) + label:after,
@@ -1243,16 +1287,22 @@ input#add-list {
   height: 1px;
   background-color: #43ce21;
   width: 0px;
-  left: 60px;
+  left: 50px;
   top: 50%;
   content: "";
   position: absolute;
+}
+@media only screen and (min-width: 47.5em) {
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:checked + label:after {
+    left: 60px;
+  }
 }
 
 /* checked mark aspect */
 [type="checkbox"]:checked + label:before {
   background-image: url(../../img/icon-check--green.svg);
-  background-size: 24px 20px;
+  background-size: 19px 16px;
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -1260,6 +1310,20 @@ input#add-list {
   background-image: url(../../img/icon-check--green.png);
 }
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .no-svg [type="checkbox"]:checked + label:before {
+    background-image: url(../../img/icon-check--green@2x.png);
+  }
+}
+@media only screen and (min-width: 47.5em) {
+  [type="checkbox"]:checked + label:before {
+    background-image: url(../../img/icon-check--green.svg);
+    background-size: 24px 20px;
+  }
+  .no-svg [type="checkbox"]:checked + label:before {
+    background-image: url(../../img/icon-check--green.png);
+  }
+}
+@media only screen and (min-width: 47.5em) and (-moz-min-device-pixel-ratio: 1.5), only screen and (min-width: 47.5em) and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-width: 47.5em) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 47.5em) and (min-device-pixel-ratio: 1.5) {
   .no-svg [type="checkbox"]:checked + label:before {
     background-image: url(../../img/icon-check--green@2x.png);
   }
