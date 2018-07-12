@@ -3,6 +3,7 @@
 *.sublime-project
 *.sass-cache
 *.DS_Store
+tasks.json
 
 # Wordpress ignores
 
